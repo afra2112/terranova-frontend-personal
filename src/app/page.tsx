@@ -55,18 +55,16 @@ export default function HomePage() {
             agendar una visita a la propiedad sea simple.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button asChild size="lg">
-              <Link href={routes.marketplace}>
-                <Search data-icon="inline-start" />
-                Explorar productos
-              </Link>
+            <Button render={<Link href={routes.marketplace} />} size="lg">
+              <Search data-icon="inline-start" />
+              Explorar productos
             </Button>
             <Button
-              asChild
+              render={<Link href={routes.register} />}
               size="lg"
               variant="secondary"
             >
-              <Link href={routes.register}>Crear cuenta</Link>
+              Crear cuenta
             </Button>
           </div>
           <div className="flex flex-wrap gap-2 pt-2">
@@ -121,8 +119,13 @@ export default function HomePage() {
               interesados.
             </p>
           </div>
-          <Button asChild size="lg" variant="secondary" className="shrink-0">
-            <Link href={routes.register}>Empezar a vender</Link>
+          <Button
+            render={<Link href={routes.register} />}
+            size="lg"
+            variant="secondary"
+            className="shrink-0"
+          >
+            Empezar a vender
           </Button>
         </div>
       </section>

@@ -37,11 +37,11 @@ export function UserMenu() {
   if (!isAuthenticated || !user) {
     return (
       <div className="flex items-center gap-2">
-        <Button asChild variant="ghost" size="sm">
-          <Link href={routes.login}>Ingresar</Link>
+        <Button render={<Link href={routes.login} />} variant="ghost" size="sm">
+          Ingresar
         </Button>
-        <Button asChild size="sm">
-          <Link href={routes.register}>Crear cuenta</Link>
+        <Button render={<Link href={routes.register} />} size="sm">
+          Crear cuenta
         </Button>
       </div>
     );
@@ -49,17 +49,19 @@ export function UserMenu() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="size-10 rounded-full p-0"
-          aria-label="Abrir menú de usuario"
-        >
-          <Avatar className="size-9">
-            <AvatarImage src={user.avatarUrl} alt={user.fullName} />
-            <AvatarFallback>{initials(user.fullName)}</AvatarFallback>
-          </Avatar>
-        </Button>
+      <DropdownMenuTrigger
+        render={
+          <Button
+            variant="ghost"
+            className="size-10 rounded-full p-0"
+            aria-label="Abrir menú de usuario"
+          />
+        }
+      >
+        <Avatar className="size-9">
+          <AvatarImage src={user.avatarUrl} alt={user.fullName} />
+          <AvatarFallback>{initials(user.fullName)}</AvatarFallback>
+        </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel className="flex flex-col gap-0.5">
@@ -72,33 +74,25 @@ export function UserMenu() {
         <DropdownMenuGroup>
           {isBuyer ? (
             <>
-              <DropdownMenuItem asChild>
-                <Link href={routes.favorites}>
-                  <Heart data-icon="inline-start" />
-                  Favoritos
-                </Link>
+              <DropdownMenuItem render={<Link href={routes.favorites} />}>
+                <Heart data-icon="inline-start" />
+                Favoritos
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href={routes.myAppointments}>
-                  <CalendarCheck data-icon="inline-start" />
-                  Mis citas
-                </Link>
+              <DropdownMenuItem render={<Link href={routes.myAppointments} />}>
+                <CalendarCheck data-icon="inline-start" />
+                Mis citas
               </DropdownMenuItem>
             </>
           ) : null}
           {isSeller ? (
-            <DropdownMenuItem asChild>
-              <Link href={routes.dashboard}>
-                <LayoutDashboard data-icon="inline-start" />
-                Panel de vendedor
-              </Link>
+            <DropdownMenuItem render={<Link href={routes.dashboard} />}>
+              <LayoutDashboard data-icon="inline-start" />
+              Panel de vendedor
             </DropdownMenuItem>
           ) : null}
-          <DropdownMenuItem asChild>
-            <Link href={routes.dashboardProfile}>
-              <User data-icon="inline-start" />
-              Mi perfil
-            </Link>
+          <DropdownMenuItem render={<Link href={routes.dashboardProfile} />}>
+            <User data-icon="inline-start" />
+            Mi perfil
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
